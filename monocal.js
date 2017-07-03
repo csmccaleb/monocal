@@ -7,6 +7,7 @@
   Check it out:
   monochromatic.co/metachromatic/hub/2017/1/16/monocal-1
 
+  https://github.com/joshavanier/monocal/
 
   Josh Avanier
 
@@ -44,26 +45,27 @@
   }
 
   // Not sure if this is even necessary
-  function getDay(d) {
-    var c = d / 7
-    return DAY[((Math.round(c * 7)) / c) - 1]
+  function getDay(n) {
+    var d = (new Date()).getDay()
+    return DAY[(new Date()).getDay() - 1]
   }
 
-  function getDate(d) {
-    var c = d / 28
-    return (Math.round(c * 28)) / c
+  function getDate(n) {
+    var decimal = Math.floor(n / 28),
+        date = (n + 1) - (28 * decimal)
+    return date
   }
 
-  function getMonth(d) {
-    return MON[Math.ceil((d - 1) / 28)]
+  function getMonth(n) {
+    return MON[Math.ceil(n / 28)]
   }
 
-  function getWeek(d) {
-    return Math.floor(d / 7)
+  function getWeek(n) {
+    return Math.floor(n / 7)
   }
 
-  function getQuarter(d) {
-    return QUR[(getWeek(d) / 13) - 1]
+  function getQuarter(n) {
+    return QUR[(getWeek(n) / 13) - 1]
   }
 
   function abbr(t) {
