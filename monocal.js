@@ -16,14 +16,15 @@
 (function(a) {
 
   var MON = [
-    "Chomsky Day",
-    "Unumium", "Duomium", "Tresium", "Quattrium",
-    "Quintium", "Sexium", "Septium", "Octium",
-    "Nonium", "Decium", "Undecium", "Dudecium",
-    "Tredecium"
-  ],
-      QUR = ["i.", "ii.", "iii.", "iv."],
-      DAY = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
+              "Chomsky Day", "Unumium", "Duomium", "Tresium", "Quattrium",
+              "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium",
+              "Undecium", "Dudecium", "Tredecium"
+            ],
+      DAY = [
+              "Monday", "Tuesday", "Wednesday", "Thursday",
+              "Friday", "Saturday", "Sunday"
+            ],
+      QUR = ["i.", "ii.", "iii.", "iv."]
 
   // Get nth day of the year
   var gD = new Date(),
@@ -58,11 +59,11 @@
     return t.substring(0, 3).toUpperCase()
   }
 
-  var mQ = getQuarter(gY), // mono quarter
-      mM = getMonth(gY), // mono month
-      mW = getWeek(gY), // mono week
-      mT = getDate(gY), // mono date
-      mD = getDay(gY), // mono day
+  var mQ = getQuarter(gY),
+      mM = getMonth(gY),
+      mW = getWeek(gY),
+      mT = getDate(gY),
+      mD = getDay(gY),
 
       year = gD.getFullYear().toString().substr(-2),
 
