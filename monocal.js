@@ -29,9 +29,7 @@
   // Get nth day of the year
   var gD = new Date(),
       gS = new Date(gD.getFullYear(), 0, 0),
-      gF = gD - gS,
-      gO = 1000 * 60 * 60 * 24,
-      gY = Math.floor(gF / gO)
+      gY = Math.floor((gD - gS) / (1000 * 60 * 60 * 24))
 
   // TODO: Manage leap years
 
@@ -59,19 +57,14 @@
     return t.substring(0, 3).toUpperCase()
   }
 
-  var mQ = toQuarter(gY),
-      mM = toMonth(gY),
-      mW = toWeek(gY),
+  var mM = toMonth(gY),
       mT = toDate(gY),
-      mD = toDay(gY),
+      mD = toDay(gY)
 
-      year = gD.getFullYear().toString().substr(-2),
-      full = abbr(mD) + " " + mT + " " + abbr(mM) + " " + year
-
-  a.getElementsByTagName("span")[0].innerHTML=full
-  a.getElementById("quarter").innerHTML=mQ
-  a.getElementById("month").innerHTML=mM
-  a.getElementById("week").innerHTML=mW
-  a.getElementById("day").innerHTML=mD
+  a.getElementsByTagName("span")[0].innerHTML=abbr(mD) + " " + mT + " " + abbr(mM) + " " + gD.getFullYear().toString().substr(-2)
+  a.getElementById("q").innerHTML=toQuarter(gY)
+  a.getElementById("m").innerHTML=mM
+  a.getElementById("w").innerHTML=toWeek(gY)
+  a.getElementById("d").innerHTML=mD
 
 })(this.document)
