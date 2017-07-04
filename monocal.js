@@ -35,46 +35,43 @@
 
   // TODO: Manage leap years
 
-  function getDay() {
+  function toDay() {
     return DAY[(new Date()).getDay() - 1]
   }
 
-  function getDate(n) {
+  function toDate(n) {
     return (n + 1) - (28 * Math.floor(n / 28))
   }
 
-  function getMonth(n) {
+  function toMonth(n) {
     return MON[Math.ceil(n / 28)]
   }
 
-  function getWeek(n) {
+  function toWeek(n) {
     return Math.floor(n / 7)
   }
 
-  function getQuarter(n) {
-    return QUR[(getWeek(n) / 13) - 1]
+  function toQuarter(n) {
+    return QUR[(toWeek(n) / 13) - 1]
   }
 
   function abbr(t) {
     return t.substring(0, 3).toUpperCase()
   }
 
-  var mQ = getQuarter(gY),
-      mM = getMonth(gY),
-      mW = getWeek(gY),
-      mT = getDate(gY),
-      mD = getDay(gY),
+  var mQ = toQuarter(gY),
+      mM = toMonth(gY),
+      mW = toWeek(gY),
+      mT = toDate(gY),
+      mD = toDay(gY),
 
       year = gD.getFullYear().toString().substr(-2),
+      full = abbr(mD) + " " + mT + " " + abbr(mM) + " " + year
 
-      shortForm = abbr(mD) + " " + mT + " " + abbr(mM) + " " + year
-
-  a.getElementsByTagName("span")[0].innerHTML=shortForm
+  a.getElementsByTagName("span")[0].innerHTML=full
   a.getElementById("quarter").innerHTML=mQ
   a.getElementById("month").innerHTML=mM
   a.getElementById("week").innerHTML=mW
   a.getElementById("day").innerHTML=mD
-
-  a=(new Date).getHours();document.body.className=6>=a||18<=a?"dark":"light"
 
 })(this.document)
