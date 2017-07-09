@@ -1,9 +1,9 @@
 /*
 
-  M O N O C A L
-
   JS implementation of @IanBattaglia's MONOCAL calendrical system
   https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1
+
+  https://github.com/joshavanier/monocal/
 
   Josh Avanier
 
@@ -17,28 +17,28 @@
               "Undecium", "Dudecium", "Tredecium"
             ],
       DAY = [
-              "Monday", "Tuesday", "Wednesday", "Thursday",
-              "Friday", "Saturday", "Sunday"
+              "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
+              "Friday", "Saturday"
             ],
       QUR = ["i.", "ii.", "iii.", "iv."]
 
   // Get nth day of the year
   var gD = new Date(),
-      fY = gD.getFullYear()
-      gY = Math.floor((gD - (new Date(fY, 0, 0))) / 86400000)
+      gS = new Date(gD.getFullYear(), 0, 0),
+      gY = Math.floor((gD - gS) / (1000 * 60 * 60 * 24))
 
-  function toDY()  { return (new Date()).getDay() - 1 }
+  function toDY()  { return (new Date()).getDay() }
   function toDT(n) { return (n + 1) - (28 * Math.floor(n / 28)) }
   function toMN(n) { return Math.ceil(n / 28) }
   function toWK(n) { return Math.floor(n / 7) }
-  function toQR(n) { return (toWK(n) / 13) - 1 }
-  function abbr(t) { return t.substring(0, 3).toUpperCase() }
+  function toQR(n) { return Math.ceil(toWK(n) / 13) - 1 }
+  function abbr(t) { return t.substring(0,3).toUpperCase() }
 
   var mM = abbr(MON[toMN(gY)]),
       mT = toDT(gY),
       mD = abbr(DAY[toDY(gY)])
 
-  a.getElementsByTagName("span")[0].innerHTML=mD + " " + mT + " " + mM + " " + fY.toString().substr(-2)
+  a.getElementsByTagName("span")[0].innerHTML=mD + " " + mT + " " + mM + " " + gD.getFullYear().toString().substr(-2)
   a.getElementById("q").innerHTML=QUR[toQR(gY)]
   a.getElementById("m").innerHTML=mM
   a.getElementById("w").innerHTML=toWK(gY)
