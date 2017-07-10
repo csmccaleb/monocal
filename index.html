@@ -11,29 +11,29 @@
 
 <div>
 	<h1><a href="https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1" target="_blank">MONOCAL</a></h1>
-	<p>Today is <span></span>
-	</p>
+	<p>Today is <span></span></p>
 	<table>
 		<tr>
-			<td>QU</td>
+			<td>Quarter</td>
 			<td id="q"></td>
 		</tr>
 		<tr>
-			<td>MO</td>
+			<td>Month</td>
 			<td id="m"></td>
 		</tr>
 		<tr>
-			<td>WK</td>
+			<td>Week</td>
 			<td id="w"></td>
 		</tr>
 		<tr>
-			<td>DY</td>
+			<td>Day</td>
 			<td id="d"></td>
 		</tr>
 	</table>
 </div>
 
 <script>
-	(function(b){var c=new Date,a=new Date(c.getFullYear(),0,0),a=Math.floor((c-a)/864E5),d="Chomsky Day;Unumium;Duomium;Tresium;Quattrium;Quintium;Sexium;Septium;Octium;Nonium;Decium;Undecium;Dudecium;Tredecium".split(";")[Math.ceil(a/28)].substring(0,3).toUpperCase(),f=a+1-28*Math.floor(a/28),e="Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" ")[(new Date).getDay()].substring(0,3).toUpperCase();b.getElementsByTagName("span")[0].innerHTML=e+" "+f+" "+d+" "+c.getFullYear().toString().substr(-2);
-	b.getElementById("q").innerHTML=["i.","ii.","iii.","iv."][Math.ceil(Math.floor(a/7)/13)-1];b.getElementById("m").innerHTML=d;b.getElementById("w").innerHTML=Math.floor(a/7);b.getElementById("d").innerHTML=e})(this.document)
+var Monocal={months:"Chomsky Day;Unumium;Duomium;Tresium;Quattrium;Quintium;Sexium;Septium;Octium;Nonium;Decium;Undecium;Dudecium;Tredecium".split(";"),days:"Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),quarters:["i.","ii.","iii.","iv."],quartersAlt:["air","water","fire","earth"],convert:function(a){var c=a.getFullYear(),b=Monocal.getNthDay(a);a=Monocal.getQuarter(b);var d=Monocal.getMonth(b),e=Monocal.getWeek(b),f=Monocal.getDate(b),b=Monocal.getDay(b);return{year:c,quarter:Monocal.quarters[a],
+quarterAlt:Monocal.quartersAlt[a],month:Monocal.months[d],week:e,date:f,day:Monocal.days[b]}},getNthDay:function(a){a=a||new Date;var c=new Date(a.getFullYear(),0,0);return Math.floor((a-c)/864E5)},getDay:function(){return(new Date).getDay()},getDate:function(a){return a+1-28*Math.floor(a/28)},getWeek:function(a){return Math.floor(a/7)},getMonth:function(a){return Math.ceil(a/28)},getQuarter:function(a){return Math.ceil(Monocal.getWeek(a)/13)-1}};
+function abbr(a){return a.substring(0,3).toUpperCase()}var cal=Monocal.convert(new Date);document.getElementsByTagName("span")[0].innerHTML=abbr(cal.day)+" "+cal.date+" "+abbr(cal.month)+" "+cal.year.toString().substr(-2);document.getElementById("q").innerHTML=cal.quarter+" ("+cal.quarterAlt+")";document.getElementById("m").innerHTML=cal.month;document.getElementById("w").innerHTML=cal.week;document.getElementById("d").innerHTML=cal.day
 </script>
