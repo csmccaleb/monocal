@@ -13,7 +13,7 @@
 
 var Monocal = {
   months: [
-    "Chomsky Day", "Unumium", "Duomium", "Tresium", "Quattrium",
+    "Unumium", "Duomium", "Tresium", "Quattrium",
     "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium",
     "Undecium", "Dudecium", "Tredecium"
   ],
@@ -112,7 +112,9 @@ var Monocal = {
 
   getMonth: function(n) {
     n = n || Monocal.getNthDay((new Date()))
-    return Monocal.months[Math.ceil(n / 28)]
+    var month = Math.ceil(n / 28) - 1
+
+    return Monocal.months[month]
   },
 
   /**
