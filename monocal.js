@@ -35,6 +35,7 @@ var Monocal = {
   convert: function(n) {
     n = n || new Date()
 
+
     let year = n.getFullYear(),
         nth = Monocal.getNthDay(n),
         date = Monocal.getDate(nth),
@@ -61,14 +62,14 @@ var Monocal = {
    * @return {number} the nth day of the year
    */
 
-  getNthDay: function(date) {
-    date = date || new Date()
-
-    let start = new Date(date.getFullYear(), 0, 1),
-        diff = date - start,
+  getNthDay: function(d) {
+    d = d || new Date()
+    
+    let start = new Date(d.getFullYear(), 0, 1),
+        diff = d - start,
         nth = Math.floor(diff / (1000 * 60 * 60 * 24))
 
-    return nth + 1
+    return nth
   },
 
   /**
@@ -89,8 +90,8 @@ var Monocal = {
   getDate: function(n) {
     n = n || Monocal.getNthDay((new Date()))
     var date = (n - (28 * Math.floor(n / 28)))
-    if (date === 0) date = 29
-    return date - 1
+    if (date === 0) date = 28
+    return date
   },
 
   /**
