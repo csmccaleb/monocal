@@ -36,16 +36,21 @@ var Monocal = {
     n = n || new Date()
 
     let year = n.getFullYear(),
-        nth = Monocal.getNthDay(n)
+        nth = Monocal.getNthDay(n),
+        date = Monocal.getDate(nth)
 
-    return {
-      year: year,
-      quarter: Monocal.getQuarter(nth),
-      quarterAlt: Monocal.getAltQuarter(nth),
-      month: Monocal.getMonth(nth),
-      week: Monocal.getWeek(nth),
-      date: Monocal.getDate(nth),
-      day: Monocal.getDay(nth)
+    if (date === 0) {
+      return "Chomsky Day " + year
+    } else if (date > 0) {
+      return {
+        year: year,
+        quarter: Monocal.getQuarter(nth),
+        quarterAlt: Monocal.getAltQuarter(nth),
+        month: Monocal.getMonth(nth),
+        week: Monocal.getWeek(nth),
+        date: Monocal.getDate(nth),
+        day: Monocal.getDay(nth)
+      }
     }
   },
 
@@ -82,7 +87,7 @@ var Monocal = {
 
   getDate: function(n) {
     n = n || Monocal.getNthDay((new Date()))
-    return (n + 1) - (28 * Math.floor(n / 28))
+    return (n - 1) - (28 * Math.floor(n / 28))
   },
 
   /**
