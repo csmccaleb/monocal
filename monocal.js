@@ -64,11 +64,11 @@ var Monocal = {
   getNthDay: function(date) {
     date = date || new Date()
 
-    let start = new Date(date.getFullYear(), 0, 0),
+    let start = new Date(date.getFullYear(), 0, 1),
         diff = date - start,
         nth = Math.floor(diff / (1000 * 60 * 60 * 24))
 
-    return nth
+    return nth + 1
   },
 
   /**
@@ -88,8 +88,8 @@ var Monocal = {
 
   getDate: function(n) {
     n = n || Monocal.getNthDay((new Date()))
-    var date = (n - 1) - (28 * Math.floor((n - 1) / 28))
-    if (date % 28 === 0) date = 28
+    var date = (n - (28 * Math.floor(n / 28)))
+    if (date === 0) date = 28
     return date
   },
 

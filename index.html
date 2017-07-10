@@ -42,9 +42,18 @@ var daysOfYear = [];
 for (var d = new Date(2017, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
 	var date = new Date(d);
 	var nth = Monocal.getNthDay(date);
+
+	var month = Monocal.getMonth(nth),
+			date = Monocal.getDate(nth)
     daysOfYear.push(date);
 
-	console.log(nth + ": " + Monocal.getMonth(nth) + " " + Monocal.getDate(nth))
+	var result = ": " + Monocal.getMonth(nth) + " " + date
+
+	if (month === "Unumium" && date === 1) {
+		result = ": Chomsky Day"
+	}
+
+	console.log(nth + result)
 }
 
 </script>
