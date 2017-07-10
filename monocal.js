@@ -42,7 +42,7 @@ var Monocal = {
 
     if (nth === 0) {
       return "Chomsky Day " + year
-    } else if (date > 0) {
+    } else if (nth > 0) {
       return {
         year: year,
         quarter: Monocal.getQuarter(nth),
