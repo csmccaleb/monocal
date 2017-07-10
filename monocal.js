@@ -28,27 +28,24 @@ var Monocal = {
 
   /**
    * Converts a Gregorian date to MONOCAL
-   * @param {number} n - the Gregorian date
+   * @param {number} [n=today] - a Gregorian date
    * @return {object} MONOCAL date properties
    */
 
   convert: function(n) {
+    n = n || new Date()
+
     let year = n.getFullYear(),
-        nth = Monocal.getNthDay(n),
-        quarter = Monocal.getQuarter(nth),
-        month = Monocal.getMonth(nth),
-        week = Monocal.getWeek(nth),
-        date = Monocal.getDate(nth),
-        day = Monocal.getDay(nth)
+        nth = Monocal.getNthDay(n)
 
     return {
       year: year,
-      quarter: Monocal.quarters[quarter],
-      quarterAlt: Monocal.quartersAlt[quarter],
-      month: Monocal.months[month],
-      week: week,
-      date: date,
-      day: Monocal.days[day]
+      quarter: Monocal.getQuarter(nth),
+      quarterAlt: Monocal.getAltQuarter(nth),
+      month: Monocal.getMonth(nth),
+      week: Monocal.getWeek(nth),
+      date: Monocal.getDate(nth),
+      day: Monocal.getDay(nth)
     }
   },
 
@@ -70,51 +67,66 @@ var Monocal = {
 
   /**
    * Gets the day of the week
-   * @return {number} the day of the week (0 - 6)
+   * @return {string} the day of the week
    */
 
   getDay: function() {
-    return (new Date()).getDay()
+    return Monocal.days[(new Date()).getDay()]
   },
 
   /**
    * Gets the Monocal date
-   * @param {number} n - the Gregorian date (nth day)
+   * @param {number} [n=today] - a Gregorian date (nth day)
    * @return {number} the Monocal date
    */
 
   getDate: function(n) {
+    n = n || Monocal.getNthDay((new Date()))
     return (n + 1) - (28 * Math.floor(n / 28))
   },
 
   /**
    * Gets the week number
-   * @param {number} n - the Gregorian date (nth day)
+   * @param {number} [n=today] - a Gregorian date (nth day)
    * @return {number} the week number
    */
 
   getWeek: function(n) {
+    n = n || Monocal.getNthDay((new Date()))
     return Math.floor(n / 7)
   },
 
   /**
-   * Gets the Monocal month number
-   * @param {number} n - the Gregorian date (nth day)
-   * @return {number} the Monocal month (0 - 12)
+   * Gets the Monocal month
+   * @param {number} [n=today] - a Gregorian date (nth day)
+   * @return {string} the Monocal month
    */
 
   getMonth: function(n) {
-    return Math.ceil(n / 28)
+    n = n || Monocal.getNthDay((new Date()))
+    return Monocal.months[Math.ceil(n / 28)]
   },
 
   /**
-   * Gets the Monocal quarter number
-   * @param {number} n - the Gregorian date (nth day)
-   * @return {number} the Monocal quarter (0 - 3)
+   * Gets the Monocal quarter
+   * @param {number} [n=today] - a Gregorian date (nth day)
+   * @return {string} the Monocal quarter
    */
 
   getQuarter: function(n) {
-    return Math.ceil(Monocal.getWeek(n) / 13) - 1
+    n = n || Monocal.getNthDay((new Date()))
+    return Monocal.quarters[Math.ceil(Monocal.getWeek(n) / 13) - 1]
+  },
+
+  /**
+   * Gets the Monocal quarter (alt)
+   * @param {number} [n=today] - a Gregorian date (nth day)
+   * @return {string} the Monocal quarter
+   */
+
+  getAltQuarter: function(n) {
+    n = n || Monocal.getNthDay((new Date()))
+    return Monocal.quartersAlt[Math.ceil(Monocal.getWeek(n) / 13) - 1]
   }
 }
 
@@ -122,7 +134,7 @@ function abbr(t) {
   return t.substring(0, 3).toUpperCase()
 }
 
-var cal = Monocal.convert((new Date()))
+var cal = Monocal.convert()
 
 document.getElementsByTagName("span")[0].innerHTML=abbr(cal.day) + " " + cal.date + " " + abbr(cal.month) + " " + cal.year.toString().substr(-2)
 document.getElementById("q").innerHTML=cal.quarter + " (" + cal.quarterAlt + ")"
