@@ -40,7 +40,7 @@ var Monocal = {
         date = Monocal.getDate(nth),
         month = Monocal.getMonth(nth)
 
-    if (date === 28 && month === "Unumium") {
+    if (date === 0 && month === "Unumium") {
       return "Chomsky Day " + year
     } else if (date > 0) {
       return {
@@ -89,8 +89,8 @@ var Monocal = {
   getDate: function(n) {
     n = n || Monocal.getNthDay((new Date()))
     var date = (n - (28 * Math.floor(n / 28)))
-    if (date === 0) date = 28
-    return date
+    if (date === 0) date = 29
+    return date - 1
   },
 
   /**
