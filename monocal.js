@@ -87,7 +87,9 @@ var Monocal = {
 
   getDate: function(n) {
     n = n || Monocal.getNthDay((new Date()))
-    return (n - 1) - (28 * Math.floor(n / 28))
+    var date = (n + 1) - (28 * Math.floor((n + 1) / 28))
+    if (date % 28 === 0) date = 28
+    return date
   },
 
   /**
