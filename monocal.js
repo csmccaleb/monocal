@@ -115,7 +115,7 @@ var Monocal = {
 
   getQuarter: function(n) {
     n = n || Monocal.getNthDay((new Date()))
-    return Monocal.quarters[Math.ceil(Monocal.getWeek(n) / 13) - 1]
+    return Monocal.quarters[Math.ceil(Monocal.getWeek(n) / 13)]
   },
 
   /**
@@ -126,7 +126,7 @@ var Monocal = {
 
   getAltQuarter: function(n) {
     n = n || Monocal.getNthDay((new Date()))
-    return Monocal.quartersAlt[Math.ceil(Monocal.getWeek(n) / 13) - 1]
+    return Monocal.quartersAlt[Math.ceil(Monocal.getWeek(n) / 13)]
   }
 }
 
