@@ -35,13 +35,12 @@ var Monocal = {
   convert: function(n) {
     n = n || new Date()
 
-
     let year = n.getFullYear(),
         nth = Monocal.getNthDay(n),
         date = Monocal.getDate(nth),
         month = Monocal.getMonth(nth)
 
-    if (date === 0 && month === "Unumium") {
+    if (nth === 0) {
       return "Chomsky Day " + year
     } else if (date > 0) {
       return {
@@ -64,7 +63,7 @@ var Monocal = {
 
   getNthDay: function(d) {
     d = d || new Date()
-    
+
     let start = new Date(d.getFullYear(), 0, 1),
         diff = d - start,
         nth = Math.floor(diff / (1000 * 60 * 60 * 24))
