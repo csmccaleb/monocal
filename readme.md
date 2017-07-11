@@ -11,6 +11,7 @@ To convert a Gregorian date to MONOCAL, pass a Date object as a parameter. If th
 
 ```javascript
 Monocal.convert(new Date(1997, 03, 17))
+Monocal.convert() // converts today's date
 ```
 
 You can also use the following to calculate a Gregorian date's MONOCAL quarter, month, week number, or date. These functions expect integers (nth day of the year) as parameters. Again, if there are no parameters, today's date will be used by default.

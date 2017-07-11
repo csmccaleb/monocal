@@ -4,10 +4,7 @@
 <title>MONOCAL</title>
 <meta name="author" content="Josh Avanier">
 <meta name="description" content="JS implementation of Ian Battaglia's MONOCAL calendrical system">
-
-<style>
-	*{margin:0;padding:0}body{background-color:#2a292a;height:90vh;display:table;width:100%;font:16px/1.618 "Roboto Mono",monospace;color:#f5f5f5}div{display:table-cell;vertical-align:middle;text-align:center;padding:0 1.2em}h1{font-size:1.618em;margin-bottom:1.618em;font-weight:400}p{max-width:20em;margin:0 auto 2.0581em}table{width:20em;margin:0 auto 2.0581em;text-align:left}table td{width:50%;padding:0 .7862em}table td:nth-child(odd){text-align:right}a{color:#f5f5f5;text-decoration:none;border-bottom:1px solid}
-</style>
+<link href="styles.css" rel="stylesheet">
 
 <div>
 	<h1><a href="https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1" target="_blank">MONOCAL</a></h1>
@@ -37,23 +34,20 @@
 <script>
 /* TESTING */
 
-var now = new Date(2018, 0, 1);
-var daysOfYear = [];
-for (var d = new Date(2017, 0, 1); d <= now; d.setDate(d.getDate() + 1)) {
-	var date = new Date(d);
-	var nth = Monocal.getNthDay(date);
+var till = new Date(2018, 0, 1),
+		daysOfYear = []
 
-	var month = Monocal.getMonth(nth),
-			date = Monocal.getDate(nth)
-    daysOfYear.push(date);
+for (var d = new Date(2017, 0, 1); d <= till; d.setDate(d.getDate() + 1)) {
+	let date = new Date(d),
+			nth = Monocal.getNthDay(date),
+			month = Monocal.getMonth(nth),
+			date = Monocal.getDate(nth),
+			result = ": " + Monocal.getMonth(nth) + " " + date
 
-	var result = ": " + Monocal.getMonth(nth) + " " + date
+	if (nth === 0) result = "Chomsky Day"
 
-	if (nth === 0) {
-		result = "Chomsky Day"
-	}
+  daysOfYear.push(date)
 
 	console.log(d.getMonth() + " " + d.getDate() + " " +  nth + result)
 }
-
 </script>
