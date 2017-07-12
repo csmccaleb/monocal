@@ -139,15 +139,3 @@ var Monocal = {
     return Monocal.quartersAlt[Math.floor(Monocal.getWeek(n) / 13)]
   }
 }
-
-function abbr(t) {
-  return t.substring(0, 3).toUpperCase()
-}
-
-var cal = Monocal.convert()
-
-document.getElementsByTagName("span")[0].innerHTML=abbr(cal.day) + " " + cal.date + " " + abbr(cal.month) + " " + cal.year.toString().substr(-2)
-document.getElementById("q").innerHTML=cal.quarter + " (" + cal.quarterAlt + ")"
-document.getElementById("m").innerHTML=cal.month
-document.getElementById("w").innerHTML=cal.week
-document.getElementById("d").innerHTML=cal.day
