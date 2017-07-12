@@ -37,23 +37,25 @@ function abbr(t) {
 
 var cal = Monocal.convert()
 
-document.getElementsByTagName("span")[0].innerHTML=abbr(cal.day) + " " + cal.date + " " + abbr(cal.month) + " " + cal.year.toString().substr(-2)
+document.getElementsByTagName("span")[0].innerHTML=Monocal.display.short(cal)
+
 document.getElementById("q").innerHTML=cal.quarter + " (" + cal.quarterAlt + ")"
 document.getElementById("m").innerHTML=cal.month
 document.getElementById("w").innerHTML=cal.week
 document.getElementById("d").innerHTML=cal.day
 
-// var till = new Date(2018, 0, 1),
+// var till = new Date(2017, 0, 1),
 // 		daysOfYear = []
 //
-// for (var d = new Date(2017, 0, 1); d <= till; d.setDate(d.getDate() + 1)) {
+// for (var d = new Date(2016, 0, 1); d <= till; d.setDate(d.getDate() + 1)) {
 // 	let date = new Date(d),
 // 			nth = Monocal.getNthDay(date),
 // 			month = Monocal.getMonth(nth),
-// 			date = Monocal.getDate(nth),
-// 			result = ": " + Monocal.getMonth(nth) + " " + date
+// 			mond = Monocal.getDate(nth),
+// 			result = ": " + month + " " + mond
 //
 // 	if (nth === 0) result = "Chomsky Day"
+// 	if (nth === 365) result = "Leap Day"
 //
 //   daysOfYear.push(date)
 //

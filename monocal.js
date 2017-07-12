@@ -13,18 +13,89 @@
 
 var Monocal = {
   months: [
-    "Unumium", "Duomium", "Tresium", "Quattrium",
-    "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium",
-    "Undecium", "Dudecium", "Tredecium"
+    "Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"
   ],
-
   days: [
-    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday",
-    "Friday", "Saturday"
+    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
   ],
-
   quarters: ["i.", "ii.", "iii.", "iv."],
   quartersAlt: ["air", "water", "fire", "earth"],
+
+  /**
+   * Displays a MONOCAL date
+   * @param {object} m - a MONOCAL date (converted)
+   */
+
+  // full = 15 Unumium 2017
+  // short = 15 UNUM 17
+  // shorter = 15UNUM17
+  // standard = Unumium 15th, 2017
+
+  display: {
+
+    // 15 Unumium 2017
+
+    full: function(m) {
+      if (m.date === "Chomsky Day" || m.date === "Leap Day")
+        return m.date + m.year
+      else {
+        return Monocal.addZero(m.date) + " " + m.month + " " + m.year
+      }
+    },
+
+    // 01 UNUM 17
+
+    short: function(m) {
+      let year = m.year.toString().substr(-2)
+      if (m.date === "Chomsky Day" || m.date === "Leap Day")
+        return m.date + " " + year
+      else {
+        return Monocal.addZero(m.date) + " " + Monocal.abbreviate(m.month) + " " + year
+      }
+    },
+
+    // 01UNUM17
+
+    shorter: function(m) {
+      year = m.year.toString().substr(-2)
+      if (m.date === "Chomsky Day" || m.date === "Leap Day")
+        return m.date + year
+      else {
+        return Monocal.addZero(m.date) + "" + Monocal.abbreviate(m.month) + year
+      }
+    },
+
+    // Unumium 1st, 2017
+
+    standard: function(m) {
+      if (m.date === "Chomsky Day" || m.date === "Leap Day")
+        return m.date + m.year
+      else {
+        return m.month + Monocal.ordinalise(m.date) + ", " + m.year
+      }
+    }
+  },
+
+  /* TODO Make these functions private */
+
+  ordinalise: function(n) {
+    let m = n % 10,
+        o = n % 100
+
+    if (m === 1 && o !== 11) return n + "st"
+    if (m === 2 && o !== 12) return n + "nd"
+    if (m === 3 && o !== 13) return n + "rd"
+    else return n + "th"
+  },
+
+  addZero: function(n) {
+    if (n < 10) return "0" + n
+    else return n
+  },
+
+  abbreviate: function(m) {
+    return m.substring(0, m.length - 3).toUpperCase()
+  },
 
   /**
    * Converts a Gregorian date to MONOCAL
@@ -37,21 +108,34 @@ var Monocal = {
 
     let year = n.getFullYear(),
         nth = Monocal.getNthDay(n),
-        date = Monocal.getDate(nth),
-        month = Monocal.getMonth(nth)
+        quarter = Monocal.getQuarter(nth),
+        quarterAlt = Monocal.getAltQuarter(nth),
+        month = Monocal.getMonth(nth),
+        week = Monocal.getWeek(nth),
+        date = Monocal.getDate(nth)
 
     if (nth === 0) {
-      return "Chomsky Day " + year
-    } else if (nth > 0) {
-      return {
-        year: year,
-        quarter: Monocal.getQuarter(nth),
-        quarterAlt: Monocal.getAltQuarter(nth),
-        month: month,
-        week: Monocal.getWeek(nth),
-        date: Monocal.getDate(nth),
-        day: Monocal.getDay(nth)
-      }
+      date = "Chomsky Day"
+      quarter = undefined
+      quarterAlt = undefined
+      month = undefined
+      week = 0
+    } else if (nth === 365) {
+      date = "Leap Day"
+      quarter = undefined
+      quarterAlt = undefined
+      month = undefined
+      week = 0
+    }
+
+    return {
+      year: year,
+      quarter: quarter,
+      quarterAlt: quarterAlt,
+      month: month,
+      week: week,
+      date: date,
+      day: Monocal.getDay(nth)
     }
   },
 
@@ -112,9 +196,7 @@ var Monocal = {
 
   getMonth: function(n) {
     n = n || Monocal.getNthDay((new Date()))
-    var month = Math.ceil(n / 28) - 1
-
-    return Monocal.months[month]
+    return Monocal.months[Math.ceil(n / 28) - 1]
   },
 
   /**
