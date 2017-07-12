@@ -26,15 +26,9 @@ var Monocal = {
    * @param {object} m - a MONOCAL date (converted)
    */
 
-  // full = 15 Unumium 2017
-  // short = 15 UNUM 17
-  // shorter = 15UNUM17
-  // standard = Unumium 15th, 2017
-
   display: {
 
-    // 15 Unumium 2017
-
+    // 01 Unumium 2017
     full: function(m) {
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + m.year
@@ -44,7 +38,6 @@ var Monocal = {
     },
 
     // 01 UNUM 17
-
     short: function(m) {
       let year = m.year.toString().substr(-2)
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
@@ -55,9 +48,8 @@ var Monocal = {
     },
 
     // 01UNUM17
-
     shorter: function(m) {
-      year = m.year.toString().substr(-2)
+      let year = m.year.toString().substr(-2)
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + year
       else {
@@ -66,12 +58,11 @@ var Monocal = {
     },
 
     // Unumium 1st, 2017
-
     standard: function(m) {
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + m.year
       else {
-        return m.month + Monocal.ordinalise(m.date) + ", " + m.year
+        return m.month + " " + Monocal.ordinalise(m.date) + ", " + m.year
       }
     }
   },
