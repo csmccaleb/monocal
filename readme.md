@@ -1,4 +1,6 @@
 ## MONOCAL
+CSS-.514 JS-2.15
+
 This is an implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s MONOCAL calendrical system in JS. Read about MONOCAL [here](https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1).
 
 ### Screenshot
