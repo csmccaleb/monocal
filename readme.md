@@ -1,12 +1,12 @@
-## MONOCAL
-CSS-.514 JS-2.15
+# MONOCAL
+CSS-.514 JS-2.15 M-90 D-97
 
 This is an implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s MONOCAL calendrical system in JS. Read about MONOCAL [here](https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1).
 
-### Screenshot
+## Screenshot
 ![MONOCAL](/img/MONOCAL.PNG)
 
-### Console Commands
+## Console Commands
 You can use Monocal's display and conversion functions on the console:
 
 There are 4 display options.
@@ -37,5 +37,5 @@ Monocal.getWeek() // returns week number
 Monocal.getDate() // returns MONOCAL date number
 ```
 
-### License
+## License
 The MONOCAL calendrical system is created by Ian Battaglia ([Twitter](https://twitter.com/IanJBattaglia) | [GitHub](https://github.com/MoreThanLuck))
