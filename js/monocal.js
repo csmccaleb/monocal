@@ -2,16 +2,18 @@
 
   MONOCAL
 
-  JS implementation of @IanBattaglia's MONOCAL calendrical system
+  JS implementation of @IanBattaglia's MONOCAL calendar
   https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1
 
   Josh Avanier
+
+  MIT
 
 */
 
 "use strict";
 
-var Monocal = {
+const MONOCAL = {
   months: [
     "Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"
   ],
@@ -26,15 +28,14 @@ var Monocal = {
    * @param {object} m - a MONOCAL date (converted)
    */
 
-  display: {
+  dis: {
 
     // 01 Unumium 2017
     full: function(m) {
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + m.year
-      else {
-        return Monocal.addZero(m.date) + " " + m.month + " " + m.year
-      }
+      else
+        return MONOCAL.addZero(m.date) + " " + m.month + " " + m.year
     },
 
     // 01 UNUM 17
@@ -42,9 +43,8 @@ var Monocal = {
       let year = m.year.toString().substr(-2)
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + " " + year
-      else {
-        return Monocal.addZero(m.date) + " " + Monocal.abbreviate(m.month) + " " + year
-      }
+      else
+        return MONOCAL.addZero(m.date) + " " + MONOCAL.abbreviate(m.month) + " " + year
     },
 
     // 01UNUM17
@@ -52,31 +52,26 @@ var Monocal = {
       let year = m.year.toString().substr(-2)
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + year
-      else {
-        return Monocal.addZero(m.date) + "" + Monocal.abbreviate(m.month) + year
-      }
+      else
+        return MONOCAL.addZero(m.date) + "" + MONOCAL.abbreviate(m.month) + year
     },
 
     // Unumium 1st, 2017
     standard: function(m) {
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + m.year
-      else {
-        return m.month + " " + Monocal.ordinalise(m.date) + ", " + m.year
+      else
+        return m.month + " " + MONOCAL.ordinalise(m.date) + ", " + m.year
+
+      function ordinalise(n) {
+        let m = n % 10,
+            o = n % 100
+        if (m === 1 && o !== 11) return n + "st"
+        if (m === 2 && o !== 12) return n + "nd"
+        if (m === 3 && o !== 13) return n + "rd"
+        else return n + "th"
       }
     }
-  },
-
-  /* TODO Make these functions private */
-
-  ordinalise: function(n) {
-    let m = n % 10,
-        o = n % 100
-
-    if (m === 1 && o !== 11) return n + "st"
-    if (m === 2 && o !== 12) return n + "nd"
-    if (m === 3 && o !== 13) return n + "rd"
-    else return n + "th"
   },
 
   addZero: function(n) {
@@ -97,36 +92,36 @@ var Monocal = {
   convert: function(n) {
     n = n || new Date()
 
-    let year = n.getFullYear(),
-        nth = Monocal.getNthDay(n),
-        quarter = Monocal.getQuarter(nth),
-        quarterAlt = Monocal.getAltQuarter(nth),
-        month = Monocal.getMonth(nth),
-        week = Monocal.getWeek(nth),
-        date = Monocal.getDate(nth)
+    let yer = n.getFullYear(),
+        nth = MONOCAL.nthDay(n),
+        qrt = MONOCAL.quarter(nth),
+        qlt = MONOCAL.altQuarter(nth),
+        mon = MONOCAL.month(nth),
+        wek = MONOCAL.week(nth),
+        dat = MONOCAL.date(nth)
 
     if (nth === 0) {
-      date = "Chomsky Day"
-      quarter = undefined
-      quarterAlt = undefined
-      month = undefined
-      week = 0
+      dat = "Chomsky Day"
+      qrt = undefined
+      qlt = undefined
+      mon = undefined
+      wek = 0
     } else if (nth === 365) {
-      date = "Leap Day"
-      quarter = undefined
-      quarterAlt = undefined
-      month = undefined
-      week = 0
+      dat = "Leap Day"
+      qrt = undefined
+      qlt = undefined
+      mon = undefined
+      wek = 0
     }
 
     return {
-      year: year,
-      quarter: quarter,
-      quarterAlt: quarterAlt,
-      month: month,
-      week: week,
-      date: date,
-      day: Monocal.getDay(nth)
+      year: yer,
+      quarter: qrt,
+      quarterAlt: qlt,
+      month: mon,
+      week: wek,
+      date: dat,
+      day: MONOCAL.day(nth)
     }
   },
 
@@ -136,14 +131,9 @@ var Monocal = {
    * @return {number} the nth day of the year
    */
 
-  getNthDay: function(d) {
+  nthDay: function(d) {
     d = d || new Date()
-
-    let start = new Date(d.getFullYear(), 0, 1),
-        diff = d - start,
-        nth = Math.floor(diff / (1000 * 60 * 60 * 24))
-
-    return nth
+    return Math.floor((d - new Date(d.getFullYear(), 0, 1)) / 86400000)
   },
 
   /**
@@ -151,21 +141,21 @@ var Monocal = {
    * @return {string} the day of the week
    */
 
-  getDay: function() {
-    return Monocal.days[(new Date()).getDay()]
+  day: function() {
+    return MONOCAL.days[(new Date()).getDay()]
   },
 
   /**
-   * Gets the Monocal date
+   * Gets the MONOCAL date
    * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {number} the Monocal date
+   * @return {number} the MONOCAL date
    */
 
-  getDate: function(n) {
-    n = n || Monocal.getNthDay((new Date()))
-    var date = (n - (28 * Math.floor(n / 28)))
-    if (date === 0) date = 28
-    return date
+  date: function(n) {
+    n = n || MONOCAL.nthDay((new Date()))
+    let d = (n - (28 * Math.floor(n / 28)))
+    if (d === 0) d = 28
+    return d
   },
 
   /**
@@ -174,41 +164,41 @@ var Monocal = {
    * @return {number} the week number
    */
 
-  getWeek: function(n) {
-    n = n || Monocal.getNthDay((new Date()))
+  week: function(n) {
+    n = n || MONOCAL.nthDay((new Date()))
     return Math.floor(n / 7)
   },
 
   /**
-   * Gets the Monocal month
+   * Gets the MONOCAL month
    * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {string} the Monocal month
+   * @return {string} the MONOCAL month
    */
 
-  getMonth: function(n) {
-    n = n || Monocal.getNthDay((new Date()))
-    return Monocal.months[Math.ceil(n / 28) - 1]
+  month: function(n) {
+    n = n || MONOCAL.nthDay((new Date()))
+    return MONOCAL.months[Math.ceil(n / 28) - 1]
   },
 
   /**
-   * Gets the Monocal quarter
+   * Gets the MONOCAL quarter
    * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {string} the Monocal quarter
+   * @return {string} the MONOCAL quarter
    */
 
-  getQuarter: function(n) {
-    n = n || Monocal.getNthDay((new Date()))
-    return Monocal.quarters[Math.floor(Monocal.getWeek(n) / 13)]
+  quarter: function(n) {
+    n = n || MONOCAL.nthDay((new Date()))
+    return MONOCAL.quarters[Math.floor(MONOCAL.week(n) / 13)]
   },
 
   /**
-   * Gets the Monocal quarter (alt)
+   * Gets the MONOCAL quarter (alt)
    * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {string} the Monocal quarter
+   * @return {string} the MONOCAL quarter
    */
 
-  getAltQuarter: function(n) {
-    n = n || Monocal.getNthDay((new Date()))
-    return Monocal.quartersAlt[Math.floor(Monocal.getWeek(n) / 13)]
+  altQuarter: function(n) {
+    n = n || MONOCAL.nthDay((new Date()))
+    return MONOCAL.quartersAlt[Math.floor(MONOCAL.week(n) / 13)]
   }
 }
