@@ -1,7 +1,7 @@
 # &#120444;&#120446;&#120445;&#120446;&#120434;&#120432;&#120443;
 CSS-.514 JS-1.95 M-98 D-98
 
-This is an implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s MONOCAL calendrical system in JS. Read about MONOCAL [here](https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1).
+This is an implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1) in JS.
 
 ## Console Commands
 You can use MONOCAL's display and conversion functions on the console:
