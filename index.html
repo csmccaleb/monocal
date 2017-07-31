@@ -1,5 +1,5 @@
 <!doctype html>
-<html><head><meta charset="utf-8">
+<meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>MONOCAL</title>
 <meta name="author" content="Josh Avanier">
@@ -7,7 +7,7 @@
 <style>
 *{margin:0;padding:0}body{background-color:#2a2a2a;height:90vh;display:table;width:100%;font:16px/1.618"Roboto Mono",monospace;color:#f5f5f5}div{display:table-cell;vertical-align:middle;text-align:center;padding:0 1.2em}h1{font-size:1.618em;margin-bottom:1.618em;font-weight:400}p{max-width:20em;margin:0 auto 2.0581em}table{width:20em;margin:0 auto 2.0581em;text-align:left}table td{width:50%;padding:0 .7862em}table td:nth-child(odd){text-align:right}a{color:#f5f5f5;text-decoration:none;border-bottom:1px solid}
 </style>
-</head><body>
+
 <div>
 	<h1><a href="https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1" target="_blank">MONOCAL</a></h1>
 	<p>Today is <span id="f"></span></p>
@@ -30,11 +30,17 @@
 		</tr>
 	</table>
 </div>
+
+<script src="js/monocal.min.js"></script>
 <script>
-	var MONOCAL={months:"Unumium Duomium Tresium Quattrium Quintium Sexium Septium Octium Nonium Decium Undecium Dudecium Tredecium".split(" "),days:"Sunday Monday Tuesday Wednesday Thursday Friday Saturday".split(" "),quarters:["i.","ii.","iii.","iv."],quartersAlt:["air","water","fire","earth"],dis:{full:function(a){return"Chomsky Day"===a.date||"Leap Day"===a.date?a.date+a.year:MONOCAL.addZero(a.date)+" "+a.month+" "+a.year},"short":function(a){var b=a.year.toString().substr(-2);return"Chomsky Day"===
-	a.date||"Leap Day"===a.date?a.date+" "+b:MONOCAL.addZero(a.date)+" "+MONOCAL.abbreviate(a.month)+" "+b},shorter:function(a){var b=a.year.toString().substr(-2);return"Chomsky Day"===a.date||"Leap Day"===a.date?a.date+b:MONOCAL.addZero(a.date)+""+MONOCAL.abbreviate(a.month)+b},standard:function(a){return"Chomsky Day"===a.date||"Leap Day"===a.date?a.date+a.year:a.month+" "+MONOCAL.ordinalise(a.date)+", "+a.year}},addZero:function(a){return 10>a?"0"+a:a},abbreviate:function(a){return a.substring(0,a.length-
-	3).toUpperCase()},convert:function(a){a=a||new Date;var b=a.getFullYear();a=MONOCAL.nthDay(a);var c=MONOCAL.quarter(a),d=MONOCAL.altQuarter(a),e=MONOCAL.month(a),f=MONOCAL.week(a),g=MONOCAL.date(a);0===a?(g="Chomsky Day",e=d=c=void 0,f=0):365===a&&(g="Leap Day",e=d=c=void 0,f=0);return{year:b,quarter:c,quarterAlt:d,month:e,week:f,date:g,day:MONOCAL.day(a)}},nthDay:function(a){a=a||new Date;return Math.floor((a-new Date(a.getFullYear(),0,1))/864E5)},day:function(){return MONOCAL.days[(new Date).getDay()]},
-	date:function(a){a=a||MONOCAL.nthDay(new Date);a-=28*Math.floor(a/28);0===a&&(a=28);return a},week:function(a){a=a||MONOCAL.nthDay(new Date);return Math.floor(a/7)},month:function(a){a=a||MONOCAL.nthDay(new Date);return MONOCAL.months[Math.ceil(a/28)-1]},quarter:function(a){a=a||MONOCAL.nthDay(new Date);return MONOCAL.quarters[Math.floor(MONOCAL.week(a)/13)]},altQuarter:function(a){a=a||MONOCAL.nthDay(new Date);return MONOCAL.quartersAlt[Math.floor(MONOCAL.week(a)/13)]}}
-	var cal=MONOCAL.convert();dis("f",MONOCAL.dis["short"](cal));dis("q",cal.quarter+" ("+cal.quarterAlt+")");dis("m",cal.month);dis("w",cal.week);dis("d",cal.day);function dis(a,b){document.getElementById(a).innerHTML=b}
+	var c = MONOCAL.convert()
+	d("f", MONOCAL.dis.short(c))
+	d("q", c.quarter + " (" + c.quarterAlt + ")")
+	d("m", c.month)
+	d("w", c.week)
+	d("d", c.day)
+
+	function d(a, b) {
+		document.getElementById(a).innerHTML = b
+	}
 </script>
-</body></html>
