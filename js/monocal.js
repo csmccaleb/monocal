@@ -1,36 +1,29 @@
-/*
-
-  MONOCAL
-
-  JS implementation of @IanBattaglia's MONOCAL calendar
-  https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1
-
-  Josh Avanier
-
-  MIT
-
-*/
+/**
+ * MONOCAL
+ * JS implementation of Ian Battaglia's MONOCAL system
+ *
+ * @author Josh Avanier
+ * @license MIT
+ */
 
 "use strict";
 
 const MONOCAL = {
-  months: [
-    "Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"
-  ],
-  days: [
-    "Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"
-  ],
+
+  months: ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"],
+  days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
   quarters: ["i.", "ii.", "iii.", "iv."],
   quartersAlt: ["air", "water", "fire", "earth"],
 
   /**
-   * Displays a MONOCAL date
-   * @param {object} m - a MONOCAL date (converted)
+   * Display a MONOCAL date
+   * @param {Object} m - A MONOCAL date (converted)
    */
 
   dis: {
 
     // 01 Unumium 2017
+
     full: function(m) {
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + m.year
@@ -39,6 +32,7 @@ const MONOCAL = {
     },
 
     // 01 UNUM 17
+
     short: function(m) {
       let year = m.year.toString().substr(-2)
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
@@ -48,6 +42,7 @@ const MONOCAL = {
     },
 
     // 01UNUM17
+
     shorter: function(m) {
       let year = m.year.toString().substr(-2)
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
@@ -57,11 +52,12 @@ const MONOCAL = {
     },
 
     // Unumium 1st, 2017
+
     standard: function(m) {
       if (m.date === "Chomsky Day" || m.date === "Leap Day")
         return m.date + m.year
       else
-        return m.month + " " + MONOCAL.ordinalise(m.date) + ", " + m.year
+        return m.month + " " + ordinalise(m.date) + ", " + m.year
 
       function ordinalise(n) {
         let m = n % 10,
@@ -74,19 +70,28 @@ const MONOCAL = {
     }
   },
 
+  /**
+   * Add a leading zero to a number less than 10
+   * @param {number} n - The number
+   */
+
   addZero: function(n) {
-    if (n < 10) return "0" + n
-    else return n
+    return 10 > n ? "0" + n : n
   },
+
+  /**
+   * Abbreviate a MONOCAL month
+   * @param {string} m - The month
+   */
 
   abbreviate: function(m) {
     return m.substring(0, m.length - 3).toUpperCase()
   },
 
   /**
-   * Converts a Gregorian date to MONOCAL
-   * @param {number} [n=today] - a Gregorian date
-   * @return {object} MONOCAL date properties
+   * Convert a Gregorian date to MONOCAL
+   * @param {number=} [n=today] - A Gregorian date
+   * @return {Object} MONOCAL date properties
    */
 
   convert: function(n) {
@@ -126,9 +131,9 @@ const MONOCAL = {
   },
 
   /**
-   * Converts a date into its nth day of the year
-   * @param {Date} date - the date
-   * @return {number} the nth day of the year
+   * Convert a date into its nth day of the year
+   * @param {Object} d - The date
+   * @return {number} The nth day of the year
    */
 
   nthDay: function(d) {
@@ -137,8 +142,8 @@ const MONOCAL = {
   },
 
   /**
-   * Gets the day of the week
-   * @return {string} the day of the week
+   * Get the day of the week
+   * @return {string} The day of the week
    */
 
   day: function() {
@@ -146,9 +151,9 @@ const MONOCAL = {
   },
 
   /**
-   * Gets the MONOCAL date
-   * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {number} the MONOCAL date
+   * Get the MONOCAL date
+   * @param {number=} [n=today] - A Gregorian date (nth day)
+   * @return {number} The MONOCAL date
    */
 
   date: function(n) {
@@ -159,9 +164,9 @@ const MONOCAL = {
   },
 
   /**
-   * Gets the week number
-   * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {number} the week number
+   * Get the week number
+   * @param {number=} [n=today] - A Gregorian date (nth day)
+   * @return {number} The week number
    */
 
   week: function(n) {
@@ -170,9 +175,9 @@ const MONOCAL = {
   },
 
   /**
-   * Gets the MONOCAL month
-   * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {string} the MONOCAL month
+   * Get the MONOCAL month
+   * @param {number=} [n=today] - A Gregorian date (nth day)
+   * @return {string} The MONOCAL month
    */
 
   month: function(n) {
@@ -181,9 +186,9 @@ const MONOCAL = {
   },
 
   /**
-   * Gets the MONOCAL quarter
-   * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {string} the MONOCAL quarter
+   * Get the MONOCAL quarter
+   * @param {number=} [n=today] - A Gregorian date (nth day)
+   * @return {string} The MONOCAL quarter
    */
 
   quarter: function(n) {
@@ -192,9 +197,9 @@ const MONOCAL = {
   },
 
   /**
-   * Gets the MONOCAL quarter (alt)
-   * @param {number} [n=today] - a Gregorian date (nth day)
-   * @return {string} the MONOCAL quarter
+   * Get the MONOCAL quarter (alt)
+   * @param {number=} [n=today] - A Gregorian date (nth day)
+   * @return {string} The MONOCAL quarter
    */
 
   altQuarter: function(n) {
