@@ -1,4 +1,6 @@
 # &#120444;&#120446;&#120445;&#120446;&#120434;&#120432;&#120443;
+![MIT License](https://joshavanier.github.io/badges/mit.svg)
+
 This is an implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1) in JS.
 
 ## Console Commands
@@ -33,7 +35,15 @@ MONO.date()       // returns MONOCAL date number
 ```
 
 ## Credits
-The MONOCAL calendrical system is created by Ian Battaglia ([Twitter](https://twitter.com/IanJBattaglia) | [GitHub](https://github.com/MoreThanLuck) | [Website](https://monochromatic.co/))
+The MONOCAL calendrical system is created by Ian Battaglia
 
-## License
-MIT
+[![@MoreThanLuck](https://joshavanier.github.io/badges/github.svg)](https://github.com/MoreThanLuck)
+[![@IanJBattaglia](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/IanJBattaglia)
+[![monochromatic.co](https://joshavanier.github.io/badges/website.svg)](https://monochromatic.co)
+
+---
+Josh Avanier
+
+[![@joshavanier](https://joshavanier.github.io/badges/github.svg)](https://github.com/joshavanier)
+[![@joshavanier](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/joshavanier)
+[![joshavanier.com](https://joshavanier.github.io/badges/website.svg)](https://joshavanier.com)
