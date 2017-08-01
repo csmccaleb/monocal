@@ -32,7 +32,8 @@ MONO.week()       // returns week number
 MONO.date()       // returns MONOCAL date number
 ```
 
+## Credits
+The MONOCAL calendrical system is created by Ian Battaglia ([Twitter](https://twitter.com/IanJBattaglia) | [GitHub](https://github.com/MoreThanLuck) | [Website](https://monochromatic.co/))
+
 ## License
 MIT
-
-The MONOCAL calendrical system is created by Ian Battaglia ([Twitter](https://twitter.com/IanJBattaglia) | [GitHub](https://github.com/MoreThanLuck))
