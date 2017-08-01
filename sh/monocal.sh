@@ -1,9 +1,11 @@
 #!/bin/bash
 
-# super-rudimentary implementation of
-# MONOCAL in bash
+# MONOCAL.sh
+# super-rudimentary implementation of MONOCAL in bash
 #
 # Josh Avanier
+#
+# MIT
 
 YEAR=$(date +"%y")
 NTH=$(date +"%j")
@@ -17,7 +19,7 @@ if [ $(($NTH%28)) -lt 0 ]; then
 fi
 
 MULTIPLIER=$(expr 28 \* $FLOOR)
-MONODATE=$(expr $NTH - $MULTIPLIER - 1)
+DATE=$(expr $NTH - $MULTIPLIER - 1)
 
 # calculate month
 
@@ -28,29 +30,29 @@ if [ $(($NTH%28)) -gt 0 ]; then
 fi
 
 if [ $CEIL = 1 ]; then
-  MONOMOTH="UNUM"
+  MONTH="UNUM"
 elif [ $CEIL = 2 ]; then
-  MONOMONTH="DUOM"
+  MONTH="DUOM"
 elif [ $CEIL = 3 ]; then
-  MONOMONTH="TRES"
+  MONTH="TRES"
 elif [ $CEIL = 4 ]; then
-  MONOMONTH="QUATTR"
+  MONTH="QUATTR"
 elif [ $CEIL = 5 ]; then
-  MONOMONTH="QUINT"
+  MONTH="QUINT"
 elif [ $CEIL = 6 ]; then
-  MONOMONTH="SEX"
+  MONTH="SEX"
 elif [ $CEIL = 7 ]; then
-  MONOMONTH="SEPT"
+  MONTH="SEPT"
 elif [ $CEIL = 8 ]; then
-  MONOMONTH="OCT"
+  MONTH="OCT"
 elif [ $CEIL = 9 ]; then
-  MONOMONTH="NON"
+  MONTH="NON"
 elif [ $CEIL = 10 ]; then
-  MONOMONTH="UNDEC"
+  MONTH="UNDEC"
 elif [ $CEIL = 11 ]; then
-  MONOMONTH="DUDEC"
+  MONTH="DUDEC"
 elif [ $CEIL = 12 ]; then
-  MONOMONTH="TREDEC"
+  MONTH="TREDEC"
 fi
 
-echo "$MONODATE $MONOMONTH $YEAR"
+echo "$DATE $MONTH $YEAR"
