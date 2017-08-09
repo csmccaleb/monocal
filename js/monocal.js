@@ -84,7 +84,7 @@ const MONO = {
   },
 
   add0: function(n) {
-    return 10 > n ? "0" + n : n.toString()
+    return ('0' + n).substr(-2)
   },
 
   abbr: function(m) {
