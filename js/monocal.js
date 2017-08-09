@@ -41,7 +41,7 @@ const MONO = {
     short: function(m) {
       let y = m.year.toString().substr(-2)
       if (m.date === MONO.yearDay || m.date === MONO.leapDay)
-        return MONO.space([m.date, year])
+        return MONO.space([m.date, y])
       else
         return MONO.space([MONO.add0(m.date), MONO.abbr(m.month), y])
     },
@@ -51,7 +51,7 @@ const MONO = {
     shorter: function(m) {
       let y = m.year.toString().substr(-2)
       if (m.date === MONO.yearDay || m.date === MONO.leapDay)
-        return m.date + year
+        return m.date + y
       else
         return MONO.add0(m.date) + MONO.abbr(m.month) + y
     },
@@ -78,8 +78,8 @@ const MONO = {
   // Add space between an array of items
 
   space: function(a) {
-    let s = "", l = a.length, i
-    for (i = 0; i < l; i++) s += (a[i] + " ")
+    let s = ""
+    for (let i = 0, l = a.length; i < l; i++) s += (a[i] + " ")
     return s.substring(0, s.length - 1)
   },
 
