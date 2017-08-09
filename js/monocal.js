@@ -15,11 +15,6 @@ const MONO = {
 
   monthsInYear: 13,
   daysInMonth: 28,
-
-  months: ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"],
-  days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"],
-  quarters: ["i.", "ii.", "iii.", "iv."],
-  quartersAlt: ["air", "water", "fire", "earth"],
   yearDay: "Chomsky Day",
   leapDay: "Leap Day",
 
@@ -151,7 +146,7 @@ const MONO = {
   },
 
   day: function() {
-    return MONO.days[(new Date()).getDay()]
+    return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][(new Date()).getDay()]
   },
 
   date: function(n) {
@@ -168,16 +163,16 @@ const MONO = {
 
   month: function(n) {
     n = n || MONO.nthDay((new Date()))
-    return MONO.months[Math.ceil(n / MONO.daysInMonth) - 1]
+    return ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"][Math.ceil(n / MONO.daysInMonth) - 1]
   },
 
   quarter: function(n) {
     n = n || MONO.nthDay((new Date()))
-    return MONO.quarters[Math.floor(MONO.week(n) / MONO.monthsInYear)]
+    return ["i.", "ii.", "iii.", "iv."][Math.floor(MONO.week(n) / MONO.monthsInYear)]
   },
 
   altQuarter: function(n) {
     n = n || MONO.nthDay((new Date()))
-    return MONO.quartersAlt[Math.floor(MONO.week(n) / MONO.monthsInYear)]
+    return ["air", "water", "fire", "earth"][Math.floor(MONO.week(n) / MONO.monthsInYear)]
   }
 }
