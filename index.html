@@ -5,11 +5,11 @@
 <meta name="author" content="Josh Avanier">
 <meta name="description" content="Implementation of Ian Battaglia's MONOCAL system">
 <style>
-*{margin:0;padding:0}body{background-color:#2a2a2a;height:100vh;display:table;width:100%;font:16px/1.618"Roboto Mono",monospace;color:#f5f5f5}div{display:table-cell;vertical-align:middle;text-align:center}h1{font-size:1.618em;margin-bottom:1.618em;font-weight:400}p{max-width:20em;margin:0 auto 2.0581em}table{width:20em;margin:0 auto;text-align:left}td{width:50%;padding:0 .7862em}td:nth-child(odd){text-align:right}a{color:#f5f5f5;text-decoration:none;border-bottom:1px solid}
+*{margin:0;padding:0}body{background-color:#2a2a2a;height:100vh;display:table;width:100%;font:16px/1.618"Roboto Mono",monospace;color:#f5f5f5}div{display:table-cell;vertical-align:middle;text-align:center}h1{font-size:1.618em;margin-bottom:1.618em;font-weight:400}p{max-width:20em;margin:0 auto 2.0581em}table{width:20em;margin:0 auto;text-align:left}td{width:50%;padding:0 .7862em}td:nth-child(odd){text-align:right}
 </style>
-
+<script src="js/monocal.min.js"></script>
 <div>
-	<h1><a href="https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1" target="_blank">MONOCAL</a></h1>
+	<h1>MONOCAL</h1>
 	<p>Today is <span id="f"></span></p>
 	<table>
 		<tr>
@@ -30,8 +30,6 @@
 		</tr>
 	</table>
 </div>
-
-<script src="js/monocal.min.js"></script>
 <script>
 	var c = MONO.convert()
 	d("f", MONO.dis.short(c))
