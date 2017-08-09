@@ -25,7 +25,7 @@ const MONO = {
     // 01 Unumium 2017
 
     full: function(m) {
-      if (m.date === MONO.yearDay || m.date === MONO.leapDay)
+      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
         return MONO.space([m.date, m.year])
       else
         return MONO.space([MONO.add0(m.date), m.month, m.year])
@@ -35,7 +35,7 @@ const MONO = {
 
     short: function(m) {
       let y = m.year.toString().substr(-2)
-      if (m.date === MONO.yearDay || m.date === MONO.leapDay)
+      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
         return MONO.space([m.date, y])
       else
         return MONO.space([MONO.add0(m.date), MONO.abbr(m.month), y])
@@ -45,7 +45,7 @@ const MONO = {
 
     shorter: function(m) {
       let y = m.year.toString().substr(-2)
-      if (m.date === MONO.yearDay || m.date === MONO.leapDay)
+      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
         return m.date + y
       else
         return MONO.add0(m.date) + MONO.abbr(m.month) + y
@@ -54,18 +54,13 @@ const MONO = {
     // Unumium 1st 2017
 
     standard: function(m) {
-      if (m.date === MONO.yearDay || m.date === MONO.leapDay)
+      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
         return MONO.space([m.date, m.year])
       else
         return MONO.space([m.month, ordinalise(m.date), m.year])
 
       function ordinalise(n) {
-        let m = n % 10,
-            o = n % 100
-        if (m === 1 && o !== 11) return n + "st"
-        if (m === 2 && o !== 12) return n + "nd"
-        if (m === 3 && o !== 13) return n + "rd"
-        else return n + "th"
+        return n + (['st', 'nd', 'rd'][(n + '').match(/1?\d\b/) - 1] || 'th')
       }
     }
   },
@@ -152,7 +147,7 @@ const MONO = {
   date: function(n) {
     n = n || MONO.nthDay((new Date()))
     let d = (n - (MONO.daysInMonth * Math.floor(n / MONO.daysInMonth)))
-    if (d === 0) d = MONO.daysInMonth
+    if (d == 0) d = MONO.daysInMonth
     return d
   },
 
