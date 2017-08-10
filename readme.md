@@ -35,7 +35,7 @@ MONO.date()       // returns MONOCAL date number
 ```
 
 ## Credits
-The MONOCAL calendrical system is created by Ian Battaglia
+Ian Battaglia
 
 [![@MoreThanLuck](https://joshavanier.github.io/badges/github.svg)](https://github.com/MoreThanLuck)
 [![@IanJBattaglia](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/IanJBattaglia)
