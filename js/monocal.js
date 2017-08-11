@@ -1,7 +1,7 @@
 /*
 
   MONOCAL
-  JS implementation of Ian Battaglia's MONOCAL system
+  Ian Battaglia's calendar
 
   Josh Avanier
 
