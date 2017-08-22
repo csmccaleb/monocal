@@ -1,12 +1,10 @@
 # &#120444;&#120446;&#120445;&#120446;&#120434;&#120432;&#120443;
 ![MIT License](https://joshavanier.github.io/badges/mit.svg)
 
-This is an implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1).
+An implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal)
 
 ## Console Commands
 You can use MONOCAL's display and conversion functions on the console:
-
-There are 4 display options.
 
 ```javascript
 let m = MONO.convert() // e.g. Septium 4, 2017
