@@ -3,7 +3,7 @@
 
 An implementation of [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal)
 
-## Console Commands
+## &#8984;
 You can use MONOCAL's display and conversion functions on the console:
 
 ```javascript
