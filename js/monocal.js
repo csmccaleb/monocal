@@ -18,50 +18,45 @@ const MONO = {
   yearDay: "Chomsky Day",
   leapDay: "Leap Day",
 
-  // Display options
+  // 01 Unumium 2017
 
-  dis: {
+  full: function(m) {
+    if (m.date == this.yearDay || m.date == this.leapDay)
+      return this.space([m.date, m.year])
+    else
+      return this.space([this.add0(m.date), m.month, m.year])
+  },
 
-    // 01 Unumium 2017
+  // 01 UNUM 17
 
-    full: function(m) {
-      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
-        return MONO.space([m.date, m.year])
-      else
-        return MONO.space([MONO.add0(m.date), m.month, m.year])
-    },
+  short: function(m) {
+    let y = m.year.toString().substr(-2)
+    if (m.date == this.yearDay || m.date == this.leapDay)
+      return this.space([m.date, y])
+    else
+      return this.space([this.add0(m.date), this.abbr(m.month), y])
+  },
 
-    // 01 UNUM 17
+  // 01UNUM17
 
-    short: function(m) {
-      let y = m.year.toString().substr(-2)
-      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
-        return MONO.space([m.date, y])
-      else
-        return MONO.space([MONO.add0(m.date), MONO.abbr(m.month), y])
-    },
+  shorter: function(m) {
+    let y = m.year.toString().substr(-2)
+    if (m.date == this.yearDay || m.date == this.leapDay)
+      return m.date + y
+    else
+      return this.add0(m.date) + this.abbr(m.month) + y
+  },
 
-    // 01UNUM17
+  // Unumium 1st 2017
 
-    shorter: function(m) {
-      let y = m.year.toString().substr(-2)
-      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
-        return m.date + y
-      else
-        return MONO.add0(m.date) + MONO.abbr(m.month) + y
-    },
+  standard: function(m) {
+    if (m.date == this.yearDay || m.date == this.leapDay)
+      return this.space([m.date, m.year])
+    else
+      return this.space([m.month, ordinalise(m.date), m.year])
 
-    // Unumium 1st 2017
-
-    standard: function(m) {
-      if (m.date == MONO.yearDay || m.date == MONO.leapDay)
-        return MONO.space([m.date, m.year])
-      else
-        return MONO.space([m.month, ordinalise(m.date), m.year])
-
-      function ordinalise(n) {
-        return n + (['st', 'nd', 'rd'][(n + '').match(/1?\d\b/) - 1] || 'th')
-      }
+    function ordinalise(n) {
+      return n + (['st', 'nd', 'rd'][(n + '').match(/1?\d\b/) - 1] || 'th')
     }
   },
 
@@ -88,7 +83,7 @@ const MONO = {
     n = n || new Date()
 
     let yer = n.getFullYear(),
-        nth = MONO.nthDay(n),
+        nth = this.nthDay(n),
         dat = 0,
         wek = 0,
         mon = "",
@@ -98,7 +93,7 @@ const MONO = {
     switch(nth) {
 
       case 0:
-        dat = MONO.yearDay
+        dat = this.yearDay
         wek = 0
         mon = undefined
         qrt = undefined
@@ -106,7 +101,7 @@ const MONO = {
         break;
 
       case 365:
-        dat = MONO.leapDay
+        dat = this.leapDay
         wek = 0
         mon = undefined
         qrt = undefined
@@ -114,11 +109,11 @@ const MONO = {
         break;
 
       default:
-        dat = MONO.date(nth)
-        wek = MONO.week(nth)
-        mon = MONO.month(nth)
-        qrt = MONO.quarter(nth)
-        qlt = MONO.altQuarter(nth)
+        dat = this.date(nth)
+        wek = this.week(nth)
+        mon = this.month(nth)
+        qrt = this.quarter(nth)
+        qlt = this.altQuarter(nth)
         break;
     }
 
@@ -129,7 +124,7 @@ const MONO = {
       month: mon,
       week: wek,
       date: dat,
-      day: MONO.day(nth)
+      day: this.day(nth)
     }
   },
 
@@ -145,29 +140,29 @@ const MONO = {
   },
 
   date: function(n) {
-    n = n || MONO.nthDay((new Date()))
-    let d = (n - (MONO.daysInMonth * Math.floor(n / MONO.daysInMonth)))
-    if (d == 0) d = MONO.daysInMonth
+    n = n || this.nthDay((new Date()))
+    let d = (n - (this.daysInMonth * Math.floor(n / this.daysInMonth)))
+    if (d == 0) d = this.daysInMonth
     return d
   },
 
   week: function(n) {
-    n = n || MONO.nthDay((new Date()))
+    n = n || this.nthDay((new Date()))
     return Math.floor(n / 7)
   },
 
   month: function(n) {
-    n = n || MONO.nthDay((new Date()))
-    return ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"][Math.ceil(n / MONO.daysInMonth) - 1]
+    n = n || this.nthDay((new Date()))
+    return ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"][Math.ceil(n / this.daysInMonth) - 1]
   },
 
   quarter: function(n) {
-    n = n || MONO.nthDay((new Date()))
-    return ["i.", "ii.", "iii.", "iv."][Math.floor(MONO.week(n) / MONO.monthsInYear)]
+    n = n || this.nthDay((new Date()))
+    return ["i.", "ii.", "iii.", "iv."][Math.floor(this.week(n) / this.monthsInYear)]
   },
 
   altQuarter: function(n) {
-    n = n || MONO.nthDay((new Date()))
-    return ["air", "water", "fire", "earth"][Math.floor(MONO.week(n) / MONO.monthsInYear)]
+    n = n || this.nthDay((new Date()))
+    return ["air", "water", "fire", "earth"][Math.floor(this.week(n) / this.monthsInYear)]
   }
 }
