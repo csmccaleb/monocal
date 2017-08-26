@@ -19,7 +19,6 @@ const MONO = {
   leapDay: "Leap Day",
 
   // 01 Unumium 2017
-
   full: function(m) {
     if (m.date == this.yearDay || m.date == this.leapDay)
       return this.space([m.date, m.year])
@@ -28,7 +27,6 @@ const MONO = {
   },
 
   // 01 UNUM 17
-
   short: function(m) {
     let y = m.year.toString().substr(-2)
     if (m.date == this.yearDay || m.date == this.leapDay)
@@ -38,7 +36,6 @@ const MONO = {
   },
 
   // 01UNUM17
-
   shorter: function(m) {
     let y = m.year.toString().substr(-2)
     if (m.date == this.yearDay || m.date == this.leapDay)
@@ -48,7 +45,6 @@ const MONO = {
   },
 
   // Unumium 1st 2017
-
   standard: function(m) {
     if (m.date == this.yearDay || m.date == this.leapDay)
       return this.space([m.date, m.year])
@@ -59,8 +55,6 @@ const MONO = {
       return n + (['st', 'nd', 'rd'][(n + '').match(/1?\d\b/) - 1] || 'th')
     }
   },
-
-  // Add space between an array of items
 
   space: function(a) {
     let s = ""
@@ -73,11 +67,8 @@ const MONO = {
   },
 
   abbr: function(m) {
-    // Octium becomes OCT
     return m.substring(0, m.length - 3).toUpperCase()
   },
-
-  // Converts a Gregorian date to MONO
 
   convert: function(n) {
     n = n || new Date()
@@ -127,8 +118,6 @@ const MONO = {
       day: this.day(nth)
     }
   },
-
-  // Get nth day of the year
 
   nthDay: function(d) {
     d = d || new Date()
