@@ -4,5 +4,5 @@
 </head><body>
 <div><h1>MONOCAL</h1><p>Today is <span id="f"></span></p><table><tr><td>Quarter</td><td id="q"></td></tr><tr><td>Month</td><td id="m"></td></tr><tr><td>Week</td><td id="w"></td></tr><tr><td>Day</td><td id="d"></td></tr></table></div>
 <script src="js/monocal.min.js"></script>
-<script>var c=MONO.convert();d("f",MONO.short(c));d("q",c.quarter+" ("+c.quarterAlt+")");d("m",c.month);d("w",c.week);d("d",c.day);function d(a,b){document.getElementById(a).innerHTML=b}</script>
+<script>var c=MONO.convert();d("f",MONO.short(c));d("q",c.q1+" ("+c.q2+")");d("m",c.mn);d("w",c.wk);d("d",c.dy);function d(a,b){document.getElementById(a).innerHTML=b}</script>
 </body></html>
