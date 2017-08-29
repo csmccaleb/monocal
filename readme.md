@@ -9,10 +9,10 @@ You can use MONOCAL's display and conversion functions on the console:
 ```javascript
 let m = MONO.convert() // e.g. Septium 4, 2017
 
-MONO.dis.full(m)     // 04 Septium 2017
-MONO.dis.short(m)    // 04 SEPT 17
-MONO.dis.shorter(m)  // 04SEPT17
-MONO.dis.standard(m) // Septium 4th, 2017
+MONO.full(m)     // 04 Septium 2017
+MONO.short(m)    // 04 SEPT 17
+MONO.shorter(m)  // 04SEPT17
+MONO.standard(m) // Septium 4th, 2017
 ```
 
 To convert a Gregorian date to MONOCAL, pass a Date object as a parameter or else today's date will be converted by default. An object containing MONOCAL properties (quarter name, month name, etc.) is returned.
@@ -25,11 +25,11 @@ MONO.convert()
 You can also use the following to calculate a Gregorian date's MONOCAL quarter, month, week number, or date. These functions expect integers (nth day of the year) as parameters. Again, today's date will be used by default unless specified otherwise.
 
 ```javascript
-MONO.quarter()    // returns quarter (i., ii., iii., iv.)
-MONO.altQuarter() // returns quarter (air, water, fire, earth)
-MONO.month()      // returns month name i.e. Septium
-MONO.week()       // returns week number
-MONO.date()       // returns MONOCAL date number
+MONO.qua() // returns quarter (i., ii., iii., iv.)
+MONO.aqu() // returns quarter (air, water, fire, earth)
+MONO.mon() // returns month name i.e. Septium
+MONO.wek() // returns week number
+MONO.dat() // returns MONOCAL date number
 ```
 
 ## Credits
