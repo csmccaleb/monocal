@@ -1,6 +1,6 @@
 # 𝙼𝙾𝙽𝙾𝙲𝙰𝙻
 
-![MIT License](https://joshavanier.github.io/badges/mit.svg)
+![MIT](https://joshavanier.github.io/badges/mit.svg)
 
 [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal)
 
@@ -30,8 +30,8 @@ Ian Battaglia
 
 [![@MoreThanLuck](https://joshavanier.github.io/badges/github.svg)](https://github.com/MoreThanLuck) [![@IanJBattaglia](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/IanJBattaglia) [![monochromatic.co](https://joshavanier.github.io/badges/website.svg)](https://monochromatic.co)
 
---------------------------------------------------------------------------------
+---
 
 Josh Avanier
 
-[![@joshavanier](https://joshavanier.github.io/badges/github.svg)](https://github.com/joshavanier) [![@joshavanier](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/joshavanier) [![joshavanier.com](https://joshavanier.github.io/badges/website.svg)](https://joshavanier.com)
+[![@joshavanier](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/joshavanier) [![joshavanier.com](https://joshavanier.github.io/badges/website.svg)](https://joshavanier.com)
