@@ -6,9 +6,9 @@
 
 ## ⌘
 
-To convert a Gregorian date to MONOCAL, pass a Date as a parameter. If there is none, today will be used by default.
+To convert a Gregorian date to MONOCAL, pass a Date as a parameter. If there is none, today will be used by default
 
-```javascript
+```js
 MONO.convert(new Date(1997, 03, 17))
 MONO.convert()
 
@@ -19,9 +19,9 @@ MONO.standard(m) // Septium 4th, 2017
 
 MONO.qua() // quarter (i., ii., iii., iv.)
 MONO.aqu() // quarter (air, water, fire, earth)
-MONO.mon() // month name i.e. Septium
+MONO.mon() // month name
 MONO.wek() // week number
-MONO.dat() // MONOCAL date number
+MONO.dat() // date number
 ```
 
 ## Credits
