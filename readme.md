@@ -1,8 +1,10 @@
-# 𝙼𝙾𝙽𝙾𝙲𝙰𝙻
+# MONOCAL
 
 ![MIT](https://joshavanier.github.io/badges/mit.svg)
 
-[Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal)
+![Screenshot](img/screenshot.png)
+
+**MONOCAL** is [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal).
 
 ## ⌘
 
