@@ -1,14 +1,12 @@
-# MONOCAL
+![Screenshot](img/screenshot.png)
 
 ![MIT](https://joshavanier.github.io/badges/mit.svg)
-
-![Screenshot](img/screenshot.png)
 
 **MONOCAL** is [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal).
 
 ## ⌘
 
-To convert a Gregorian date to MONOCAL, pass a Date as a parameter. If there is none, today will be used by default
+To convert a Gregorian date to MONOCAL, pass a `Date` as a parameter. If there is none, today will be used by default
 
 ```js
 MONO.convert(new Date(1997, 03, 17))
