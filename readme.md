@@ -4,7 +4,7 @@
 
 ![Screenshot](img/screenshot.png)
 
-**MONOCAL** is [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [MONOCAL calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal).
+**MONOCAL** is [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal).
 
 ## ⌘
 
@@ -26,13 +26,11 @@ MONO.wek() // week number
 MONO.dat() // date number
 ```
 
-## Credits
+---
 
 Ian Battaglia
 
 [![@MoreThanLuck](https://joshavanier.github.io/badges/github.svg)](https://github.com/MoreThanLuck) [![@IanJBattaglia](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/IanJBattaglia) [![monochromatic.co](https://joshavanier.github.io/badges/website.svg)](https://monochromatic.co)
-
----
 
 Josh Avanier
 
