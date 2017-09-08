@@ -12,8 +12,8 @@
 
 const MONO = {
 
-  miy: 13,
-  dim: 28,
+  miy: 13, // months in year
+  dim: 28, // days in month
 
   ydy: "Chomsky Day",
   ldy: "Leap Day",
@@ -56,14 +56,14 @@ const MONO = {
     n = n || new Date()
 
     let yer = n.getFullYear(),
-        nth = this.nth(n),
-        dat = 0,
-        wek = 0,
-        mon = "",
-        qrt = "",
-        qlt = ""
+      nth = this.nth(n),
+      dat = 0,
+      wek = 0,
+      mon = "",
+      qrt = "",
+      qlt = ""
 
-    switch(nth) {
+    switch (nth) {
       case 0:
         dat = this.ydy
         wek = 0
@@ -109,7 +109,7 @@ const MONO = {
 
   dat: function(n) {
     n = n || this.nth((new Date()))
-    let d = (n - (this.dim * Math.floor(n / this.dim)))
+    let d = n - (this.dim * Math.floor(n / this.dim))
     if (d == 0) d = this.dim
     return d
   },
