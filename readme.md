@@ -1,6 +1,7 @@
-![Screenshot](img/screenshot.png)
+[![Screenshot](img/screenshot.png)](https://joshavanier.github.io/monocal/)
 
-![MIT](https://joshavanier.github.io/badges/mit.svg)
+![MIT](https://joshavanier.github.io/badges/svg/mit.svg)
+![READY](https://joshavanier.github.io/badges/svg/ready.svg "This project is ready for use")
 
 **MONOCAL** is [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal).
 
@@ -28,8 +29,8 @@ MONO.dat() // date number
 
 Ian Battaglia
 
-[![@MoreThanLuck](https://joshavanier.github.io/badges/github.svg)](https://github.com/MoreThanLuck) [![@IanJBattaglia](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/IanJBattaglia) [![monochromatic.co](https://joshavanier.github.io/badges/website.svg)](https://monochromatic.co)
+[![@MoreThanLuck](https://joshavanier.github.io/badges/svg/github.svg)](https://github.com/MoreThanLuck) [![@IanJBattaglia](https://joshavanier.github.io/badges/svg/twitter.svg)](https://twitter.com/IanJBattaglia) [![monochromatic.co](https://joshavanier.github.io/badges/svg/website.svg)](https://monochromatic.co)
 
 Josh Avanier
 
-[![@joshavanier](https://joshavanier.github.io/badges/twitter.svg)](https://twitter.com/joshavanier) [![joshavanier.com](https://joshavanier.github.io/badges/website.svg)](https://joshavanier.com)
+[![@joshavanier](https://joshavanier.github.io/badges/svg/twitter.svg)](https://twitter.com/joshavanier) [![joshavanier.com](https://joshavanier.github.io/badges/svg/website.svg)](https://joshavanier.com)
