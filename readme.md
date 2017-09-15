@@ -1,7 +1,6 @@
 [![Screenshot](img/screenshot.png)](https://joshavanier.github.io/monocal/)
 
 ![MIT](https://joshavanier.github.io/badges/svg/mit.svg)
-![READY](https://joshavanier.github.io/badges/svg/ready.svg "This project is ready for use")
 
 **MONOCAL** is [Ian Battaglia](https://twitter.com/IanJBattaglia)'s [calendrical system](https://monochromatic.co/metachromatic/index/2017/1/16/monocal-1?rq=monocal).
 
