@@ -6,7 +6,7 @@
 
 ## ⌘
 
-To convert a Gregorian date to MONOCAL, pass a `Date` as a parameter. If there is none, today will be used by default
+To convert a Gregorian date to MONOCAL, pass a `Date` as a parameter, otherwise today will be used by default
 
 ```js
 MONO.convert(new Date(1997, 03, 17))
