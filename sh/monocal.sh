@@ -3,15 +3,17 @@
 M=(UNUM DUOM TRES QUATTR QUINT SEX SEPT OCT NON DEC UNDEC DUDEC TREDEC)
 
 N=$(date +"%j")
-F=$(($N/28))
+S=$(($N/28))
+P=$(($N%28))
+F=$S
 
-if [ $(($N%28)) -lt 0 ]; then
+if [ $P -lt 0 ]; then
   F=$(($F-1))
 fi
 
-C=$(($N/28))
+C=$S
 
-if [ $(($N%28)) -gt 0 ]; then
+if [ $P -gt 0 ]; then
   C=$(($C+1))
 fi
 
