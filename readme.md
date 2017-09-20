@@ -10,7 +10,6 @@ To convert a Gregorian date, pass a `Date` parameter, otherwise today will be us
 
 ```js
 MONO.convert(new Date(1997, 03, 17))
-MONO.convert()
 
 MONO.full(m)     // 04 Septium 2017
 MONO.short(m)    // 04 SEPT 17
