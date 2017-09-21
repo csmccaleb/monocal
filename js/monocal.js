@@ -12,11 +12,11 @@
 
 const MONO = {
 
-  miy: 13, // months in year
-  dim: 28, // days in month
+  MIY: 13, // months in year
+  DIM: 28, // days in month
 
-  ydy: "Chomsky Day",
-  ldy: "Leap Day",
+  YDY: "Chomsky Day",
+  LDY: "Leap Day",
 
   /**
    * Display a full-form date (01 Nonium 2017)
@@ -25,7 +25,7 @@ const MONO = {
    */
 
   full: function(m) {
-    return m.dt == this.ydy || m.dt == this.ldy ? this.space([m.dt, m.yr]) : this.space([this.pad(m.dt), m.mn, m.yr])
+    return m.dt == this.YDY || m.dt == this.LDY ? this.space([m.dt, m.yr]) : this.space([this.pad(m.dt), m.mn, m.yr])
   },
 
   /**
@@ -36,8 +36,7 @@ const MONO = {
 
   short: function(m) {
     let y = m.yr.toString().substr(-2)
-
-    return m.dt == this.ydy || m.dt == this.ldy ? this.space([m.dt, y]) : this.space([this.pad(m.dt), this.abbr(m.mn), y])
+    return m.dt == this.YDY || m.dt == this.LDY ? this.space([m.dt, y]) : this.space([this.pad(m.dt), this.abbr(m.mn), y])
   },
 
   /**
@@ -48,8 +47,7 @@ const MONO = {
 
   shorter: function(m) {
     let y = m.yr.toString().substr(-2)
-
-    return m.dt == this.ydy || m.dt == this.ldy ? m.dt + y : this.pad(m.dt) + this.abbr(m.mn) + y
+    return m.dt == this.YDY || m.dt == this.LDY ? m.dt + y : this.pad(m.dt) + this.abbr(m.mn) + y
   },
 
   /**
@@ -59,7 +57,7 @@ const MONO = {
    */
 
   standard: function(m) {
-    return m.dt == this.ydy || m.dt == this.ldy ? this.space([m.dt, m.yr]) : this.space([m.mn, (m.dt + (['st', 'nd', 'rd'][(m.dt + '').match(/1?\d\b/) - 1] || 'th')), m.yr])
+    return m.dt == this.YDY || m.dt == this.LDY ? this.space([m.dt, m.yr]) : this.space([m.mn, (m.dt + (['st', 'nd', 'rd'][(m.dt + '').match(/1?\d\b/) - 1] || 'th')), m.yr])
   },
 
   /**
@@ -81,21 +79,19 @@ const MONO = {
 
     switch (nth) {
       case 0:
-        dat = this.ydy
+        dat = this.YDY
         wek = 0
         mon = undefined
         qrt = undefined
         qlt = undefined
         break;
-
       case 365:
-        dat = this.ldy
+        dat = this.LDY
         wek = 0
         mon = undefined
         qrt = undefined
         qlt = undefined
         break;
-
       default:
         dat = this.dat(nth)
         wek = this.wek(nth)
@@ -141,7 +137,7 @@ const MONO = {
 
   dat: function(n) {
     n = n || this.nth((new Date()))
-    let d = n - (this.dim * Math.floor(n / this.dim))
+    let d = n - (this.DIM * Math.floor(n / this.DIM))
     return d == 0 ? 28 : d
   },
 
@@ -164,7 +160,7 @@ const MONO = {
 
   mon: function(n) {
     n = n || this.nth((new Date()))
-    return ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"][Math.ceil(n / this.dim) - 1]
+    return ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"][Math.ceil(n / this.DIM) - 1]
   },
 
   /**
@@ -175,7 +171,7 @@ const MONO = {
 
   qua: function(n) {
     n = n || this.nth((new Date()))
-    return ["i.", "ii.", "iii.", "iv."][Math.floor(this.wek(n) / this.miy)]
+    return ["i.", "ii.", "iii.", "iv."][Math.floor(this.wek(n) / this.MIY)]
   },
 
   /**
@@ -186,7 +182,7 @@ const MONO = {
 
   aqu: function(n) {
     n = n || this.nth((new Date()))
-    return ["air", "water", "fire", "earth"][Math.floor(this.wek(n) / this.miy)]
+    return ["air", "water", "fire", "earth"][Math.floor(this.wek(n) / this.MIY)]
   },
 
   // TODO: Make space(), pad(), & abbr() private
@@ -199,10 +195,7 @@ const MONO = {
 
   space: function(a) {
     let s = ""
-
-    for (let i = 0, l = a.length; i < l; i++)
-      s += a[i] + " "
-
+    for (let i = 0, l = a.length; i < l; i++) s += a[i] + " "
     return s.substring(0, s.length - 1)
   },
 
