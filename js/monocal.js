@@ -154,7 +154,7 @@ const MONO = {
    */
 
   mon(n = this.nth(new Date())) {
-    return ["Unumium", "Duomium", "Tresium", "Quattrium", "Quintium", "Sexium", "Septium", "Octium", "Nonium", "Decium", "Undecium", "Dudecium", "Tredecium"][Math.ceil(n / this.DIM) - 1]
+    return ["Enad", "Dyad", "Triad", "Tetrad", "Pentad", "Hexad", "Heptad", "Oktad", "Eniad", "Dekad", "Endekad", "Dodekad", "Tredekad"][Math.ceil(n / this.DIM) - 1]
   },
 
   /**
@@ -205,6 +205,6 @@ const MONO = {
    */
 
   abbr(m) {
-    return m.substring(0, m.length - 3).toUpperCase()
+    return m.substring(0, 3).toUpperCase()
   }
 }
