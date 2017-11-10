@@ -1,22 +1,20 @@
-/*
+/**
+ * MONOCAL
+ * Ian Battaglia's calendar
+ *
+ * @author Josh Avanier
+ * @license MIT
+ */
 
-  MONOCAL
-  Ian Battaglia's calendar
-
-  Josh Avanier
-  MIT
-
-*/
-
-"use strict";
+'use strict';
 
 const MONO = {
 
   MIY: 13,
   DIM: 28,
 
-  YDY: "Chomsky Day",
-  LDY: "Leap Day",
+  YDY: 'Chomsky Day',
+  LDY: 'Leap Day',
 
   /**
    * Display a full-form date (01 Nonium 2017)
@@ -25,7 +23,7 @@ const MONO = {
    */
 
   full(m) {
-    return m.dt == this.YDY || m.dt == this.LDY ? this.space([m.dt, m.yr]) : this.space([this.pad(m.dt), m.mn, m.yr])
+    return m.dt === this.YDY || m.dt === this.LDY ? this.space([m.dt, m.yr]) : this.space([this.pad(m.dt), m.mn, m.yr])
   },
 
   /**
@@ -36,7 +34,7 @@ const MONO = {
 
   short(m) {
     let y = m.yr.toString().substr(-2)
-    return m.dt == this.YDY || m.dt == this.LDY ? this.space([m.dt, y]) : this.space([this.pad(m.dt), this.abbr(m.mn), y])
+    return m.dt === this.YDY || m.dt === this.LDY ? this.space([m.dt, y]) : this.space([this.pad(m.dt), this.abbr(m.mn), y])
   },
 
   /**
@@ -47,7 +45,7 @@ const MONO = {
 
   shorter(m) {
     let y = m.yr.toString().substr(-2)
-    return m.dt == this.YDY || m.dt == this.LDY ? m.dt + y : this.pad(m.dt) + this.abbr(m.mn) + y
+    return m.dt === this.YDY || m.dt === this.LDY ? m.dt + y : this.pad(m.dt) + this.abbr(m.mn) + y
   },
 
   /**
@@ -57,7 +55,7 @@ const MONO = {
    */
 
   standard(m) {
-    return m.dt == this.YDY || m.dt == this.LDY ? this.space([m.dt, m.yr]) : this.space([m.mn, (m.dt + (['st', 'nd', 'rd'][(m.dt + '').match(/1?\d\b/) - 1] || 'th')), m.yr])
+    return m.dt === this.YDY || m.dt === this.LDY ? this.space([m.dt, m.yr]) : this.space([m.mn, (m.dt + (['st', 'nd', 'rd'][(m.dt + '').match(/1?\d\b/) - 1] || 'th')), m.yr])
   },
 
   /**
@@ -67,15 +65,15 @@ const MONO = {
    */
 
   convert(n = new Date()) {
-    let yer = n.getFullYear(),
-        nth = this.nth(n),
-        dat = 0,
-        wek = 0,
-        mon = "",
-        qrt = "",
-        qlt = ""
+    let yer = n.getFullYear()
+    let nth = this.nth(n)
+    let dat = 0
+    let wek = 0
+    let mon = ''
+    let qrt = ''
+    let qlt = ''
 
-    switch (nth) {
+    switch(nth) {
       case 0:
         dat = this.YDY
         wek = 0
@@ -114,7 +112,7 @@ const MONO = {
    */
 
   nth(d = new Date()) {
-    return Math.floor((d - new Date(d.getFullYear(), 0, 1)) / 86400000)
+    return Math.floor((d - new Date(d.getFullYear(), 0, 1)) / 864E5)
   },
 
   /**
@@ -123,7 +121,7 @@ const MONO = {
    */
 
   day() {
-    return ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"][(new Date()).getDay()]
+    return ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'][(new Date()).getDay()]
   },
 
   /**
@@ -134,7 +132,7 @@ const MONO = {
 
   dat(n = this.nth(new Date())) {
     let d = n - this.DIM * Math.floor(n / this.DIM)
-    return d == 0 ? 28 : d
+    return d === 0 ? 28 : d
   },
 
   /**
@@ -154,7 +152,7 @@ const MONO = {
    */
 
   mon(n = this.nth(new Date())) {
-    return ["Enad", "Dyad", "Triad", "Tetrad", "Pentad", "Hexad", "Heptad", "Oktad", "Eniad", "Dekad", "Endekad", "Dodekad", "Tredekad"][Math.ceil(n / this.DIM) - 1]
+    return ['Enad', 'Dyad', 'Triad', 'Tetrad', 'Pentad', 'Hexad', 'Heptad', 'Oktad', 'Eniad', 'Dekad', 'Endekad', 'Dodekad', 'Tredekad'][Math.ceil(n / this.DIM) - 1]
   },
 
   /**
@@ -164,7 +162,7 @@ const MONO = {
    */
 
   qua(n = this.nth(new Date())) {
-    return ["i.", "ii.", "iii.", "iv."][Math.floor(this.wek(n) / this.MIY)]
+    return ['i.', 'ii.', 'iii.', 'iv.'][Math.floor(this.wek(n) / this.MIY)]
   },
 
   /**
@@ -174,7 +172,7 @@ const MONO = {
    */
 
   aqu(n = this.nth(new Date())) {
-    return ["air", "water", "fire", "earth"][Math.floor(this.wek(n) / this.MIY)]
+    return ['air', 'water', 'fire', 'earth'][Math.floor(this.wek(n) / this.MIY)]
   },
 
   // TODO: Make space(), pad(), & abbr() private
@@ -186,7 +184,12 @@ const MONO = {
    */
 
   space(a) {
-    for (var s = "", i = 0, l = a.length; i < l; i++) s += a[i] + " "
+    let s = ''
+
+    for (let i = 0, l = a.length; i < l; i++) {
+      s += a[i] + ' '
+    }
+
     return s.substring(0, s.length - 1)
   },
 
@@ -201,7 +204,7 @@ const MONO = {
 
   /**
    * Abbreviate MONOCAL months
-   * @return {string} MONOCAL month name sans "-ium"
+   * @return {string} MONOCAL month name sans '-ium'
    */
 
   abbr(m) {
