@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale = 1.0, initial-scale = 1.0, maximum-scale = 5.0, user-scalable=yes">
+  <title>MONOCAL</title>
+  <meta name="author" content="Josh Avanier">
+  <meta name="description" content="Ian Battaglia's calendar">
+<style>
+*{margin:0;padding:0}body{background-color:#2a2a2a;height:100vh;display:table;width:100%;font:16px/1.618"Roboto Mono",monospace;color:#f5f5f5}div{display:table-cell;vertical-align:middle;text-align:center}h1{font-size:1.618em;margin-bottom:1.618em;font-weight:400}p{max-width:20em;margin:0 auto 2.0581em}table{width:20em;margin:0 auto;text-align:left}td{width:50%;padding:0 .7862em}td:nth-child(odd){text-align:right}a{color:#f5f5f5;text-decoration:none;border-bottom:1px solid}
+</style>
+<script src="js/monocal.min.js"></script>
+</head><body>
+<div>
+	<h1><a href="https://monochromatic.co/metachromatic/hub/2017/1/16/monocal-1" target="_blank">MONOCAL</a></h1>
+	<p>Today is <span id="f"></span></p>
+	<table>
+		<tr>
+			<td>Quarter</td>
+			<td id="q"></td>
+		</tr>
+		<tr>
+			<td>Month</td>
+			<td id="m"></td>
+		</tr>
+		<tr>
+			<td>Week</td>
+			<td id="w"></td>
+		</tr>
+		<tr>
+			<td>Day</td>
+			<td id="d"></td>
+		</tr>
+	</table>
+</div>
+
+<script>
+	var c = MONO.convert()
+  console.log(c)
+	d("f", MONO.short(c))
+	d("q", c.q1 + " (" + c.q2 + ")")
+	d("m", c.mn)
+	d("w", c.wk)
+	d("d", c.dy)
+	function d(a, b) {
+		document.getElementById(a).innerHTML = b
+	}
+</script>
+</body>
+</html>
